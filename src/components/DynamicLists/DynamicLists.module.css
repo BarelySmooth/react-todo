@@ -1,0 +1,24 @@
+ul.dynamic_lists {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 1.5rem;
+  color: #c7dfff;
+  font-family: "Montserrat", sans-serif;
+}
+
+ul.dynamic_lists > li {
+  /* background-color: rgba(127, 255, 212, 0.264); */
+  margin: 0px 10px 0px 0px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* TODO: Implement custom style for selected list item */
+ul.dynamic_lists > li.selected {
+  background-color: white;
+  color: rgb(44, 49, 67);
+}
