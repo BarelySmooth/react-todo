@@ -1,0 +1,45 @@
+/*
+.groupList.levelOneItem
+.subList.levelTwoItem
+.subList.levelOneItem
+*/
+
+.todo_folders_container {
+  margin-left: 20px;
+}
+
+/* Apply these styles to ALL level one item container, including level 2 child divs */
+.groupList.levelOneItem {
+  margin-top: 20px;
+}
+
+.subList.levelOneItem {
+  margin-top: 10px;
+}
+
+.groupList.levelOneItem > span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.levelTwoItemsContainer {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.subList {
+  padding: 8px 10px 8px 10px;
+  font-size: 17px;
+  margin-right: 20px;
+  border-radius: 6px;
+  transition: 0.25s;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+
+.sublist_selected {
+  background-color: #c7dfff;
+  color: #30304b;
+  padding: 10px 10px 10px 10px;
+}

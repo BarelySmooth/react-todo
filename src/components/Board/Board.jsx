@@ -15,7 +15,7 @@ const Board = () => {
   return (
     <div className={styles.board}>
       {/* Display only if currentSelected tab is a dynamic list */}
-      {appState.currentSelectedTab.tabType &&
+      {appState.currentSelectedTab.tabType === "dynamic" &&
         arrayOfBuiltInLists.map((builtInList) => {
           if (builtInList.key === appState.currentSelectedTab.id) {
             return <h1 key={builtInList.key}>{builtInList.value}</h1>;
@@ -23,6 +23,16 @@ const Board = () => {
             return null;
           }
         })}
+      {/* Display only if  current selected tab is a user list */}
+      {appState.currentSelectedTab.tabType === "user_list" && (
+        <h1>
+          {
+            appState.subLists.find(
+              (subList) => subList.id === appState.currentSelectedTab.id
+            ).title
+          }
+        </h1>
+      )}
     </div>
   );
 };

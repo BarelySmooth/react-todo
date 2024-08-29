@@ -2,21 +2,22 @@
   "topLevelHierarchy": [
     "group_list_0001",
     "group_list_0002",
-    "sub_list_0000005"
+    "sub_list_0000005",
+    "sub_list_0000006"
   ],
   "groupLists": [
     {
       "id": "group_list_0001",
       "type": "groupList",
       "title": "General",
-      "hierarchy_level": 1,
+      "hierarchyLevel": 1,
       "subLists": ["sub_list_0000001", "sub_list_0000002"]
     },
     {
       "id": "group_list_0002",
       "type": "groupList",
       "title": "Programming",
-      "hierarchy_level": 1,
+      "hierarchyLevel": 1,
       "subLists": ["sub_list_0000003", "sub_list_0000004"]
     }
   ],
@@ -25,48 +26,56 @@
       "id": "sub_list_0000001",
       "type": "subList",
       "title": "General List 1",
-      "hierarchy_level": 2,
-      "parent_id": "group_list_0001",
+      "hierarchyLevel": 2,
+      "parentID": "group_list_0001",
       "todos": ["todo_0000001", "todo_0000002", "todo_0000003"]
     },
     {
       "id": "sub_list_0000002",
       "type": "subList",
       "title": "General List 2",
-      "hierarchy_level": 2,
-      "parent_id": "group_list_0001",
+      "hierarchyLevel": 2,
+      "parentID": "group_list_0001",
       "todos": ["todo_0000004", "todo_0000005", "todo_0000006"]
     },
     {
       "id": "sub_list_0000003",
       "type": "subList",
       "title": "Programming List 1",
-      "hierarchy_level": 2,
-      "parent_id": "group_list_0002",
+      "hierarchyLevel": 2,
+      "parentID": "group_list_0002",
       "todos": ["todo_0000007", "todo_0000008", "todo_0000009"]
     },
     {
       "id": "sub_list_0000004",
       "type": "subList",
       "title": "Programming List 2",
-      "hierarchy_level": 2,
-      "parent_id": "group_list_0002",
+      "hierarchyLevel": 2,
+      "parentID": "group_list_0002",
       "todos": ["todo_0000010", "todo_0000011", "todo_0000012"]
     },
     {
       "id": "sub_list_0000005",
       "type": "subList",
       "title": "Work",
-      "hierarchy_level": 1,
-      "parent_id": null,
+      "hierarchyLevel": 1,
+      "parentID": null,
       "todos": ["todo_0000013", "todo_0000014", "todo_0000015"]
+    },
+    {
+      "id": "sub_list_0000006",
+      "type": "subList",
+      "title": "Studies",
+      "hierarchyLevel": 1,
+      "parentID": null,
+      "todos": []
     }
   ],
   "todos": [
     {
       "id": "todo_0000001",
       "type": "todo",
-      "parent_id": "sub_list_0000001",
+      "parentID": "sub_list_0000001",
       "title": "Todo 1",
       "description": "This is a description for Todo 1",
       "dueDate": "2021-12-31",
@@ -76,7 +85,7 @@
     {
       "id": "todo_0000002",
       "type": "todo",
-      "parent_id": "sub_list_0000001",
+      "parentID": "sub_list_0000001",
       "title": "Todo 2",
       "description": "This is a description for Todo 2",
       "dueDate": "2021-12-31",
@@ -86,7 +95,7 @@
     {
       "id": "todo_0000003",
       "type": "todo",
-      "parent_id": "sub_list_0000001",
+      "parentID": "sub_list_0000001",
       "title": "Todo 3",
       "description": "This is a description for Todo 3",
       "dueDate": "2021-12-31",
@@ -96,7 +105,7 @@
     {
       "id": "todo_0000004",
       "type": "todo",
-      "parent_id": "sub_list_0000002",
+      "parentID": "sub_list_0000002",
       "title": "Todo 1",
       "description": "This is a description for Todo 1",
       "dueDate": "2021-12-31",
@@ -106,7 +115,7 @@
     {
       "id": "todo_0000005",
       "type": "todo",
-      "parent_id": "sub_list_0000002",
+      "parentID": "sub_list_0000002",
       "title": "Todo 2",
       "description": "This is a description for Todo 2",
       "dueDate": "2021-12-31",
@@ -116,7 +125,7 @@
     {
       "id": "todo_0000006",
       "type": "todo",
-      "parent_id": "sub_list_0000002",
+      "parentID": "sub_list_0000002",
       "title": "Todo 3",
       "description": "This is a description for Todo 3",
       "dueDate": "2021-12-31",
@@ -126,7 +135,7 @@
     {
       "id": "todo_0000007",
       "type": "todo",
-      "parent_id": "sub_list_0000003",
+      "parentID": "sub_list_0000003",
       "title": "Todo 1",
       "description": "This is a description for Todo 1",
       "dueDate": "2021-12-31",
@@ -136,7 +145,7 @@
     {
       "id": "todo_0000008",
       "type": "todo",
-      "parent_id": "sub_list_0000003",
+      "parentID": "sub_list_0000003",
       "title": "Todo 2",
       "description": "This is a description for Todo 2",
       "dueDate": "2021-12-31",
@@ -146,7 +155,7 @@
     {
       "id": "todo_0000009",
       "type": "todo",
-      "parent_id": "sub_list_0000003",
+      "parentID": "sub_list_0000003",
       "title": "Todo 3",
       "description": "This is a description for Todo 3",
       "dueDate": "2021-12-31",
@@ -156,7 +165,7 @@
     {
       "id": "todo_0000010",
       "type": "todo",
-      "parent_id": "sub_list_0000004",
+      "parentID": "sub_list_0000004",
       "title": "Todo 1",
       "description": "This is a description for Todo 1",
       "dueDate": "2021-12-31",
@@ -166,7 +175,7 @@
     {
       "id": "todo_0000011",
       "type": "todo",
-      "parent_id": "sub_list_0000004",
+      "parentID": "sub_list_0000004",
       "title": "Todo 2",
       "description": "This is a description for Todo 2",
       "dueDate": "2021-12-31",
@@ -176,7 +185,7 @@
     {
       "id": "todo_0000012",
       "type": "todo",
-      "parent_id": "sub_list_0000004",
+      "parentID": "sub_list_0000004",
       "title": "Todo 3",
       "description": "This is a description for Todo 3",
       "dueDate": "2021-12-31",
@@ -186,7 +195,7 @@
     {
       "id": "todo_0000013",
       "type": "todo",
-      "parent_id": "sub_list_0000005",
+      "parentID": "sub_list_0000005",
       "title": "Todo 1",
       "description": "This is a description for Todo 1",
       "dueDate": "2021-12-31",
@@ -196,7 +205,7 @@
     {
       "id": "todo_0000014",
       "type": "todo",
-      "parent_id": "sub_list_0000005",
+      "parentID": "sub_list_0000005",
       "title": "Todo 2",
       "description": "This is a description for Todo 2",
       "dueDate": "2021-12-31",
@@ -206,7 +215,7 @@
     {
       "id": "todo_0000015",
       "type": "todo",
-      "parent_id": "sub_list_0000005",
+      "parentID": "sub_list_0000005",
       "title": "Todo 3",
       "description": "This is a description for Todo 3",
       "dueDate": "2021-12-31",
