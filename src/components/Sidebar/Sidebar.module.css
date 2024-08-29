@@ -4,6 +4,7 @@
   font-family: Inter, sans-serif;
   height: 100vh;
   width: 250px;
+  user-select: none;
 }
 
 .sidebar > h1 {

@@ -1,3 +1,11 @@
+.board {
+  background-color: #fafafa;
+  flex-grow: 1;
+}
+
 .board > h1 {
-  font-family: "Montserrat", sans-serif;
+  color: #30304b;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  padding: 20px 0px 0px 20px;
 }
