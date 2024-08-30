@@ -17,14 +17,39 @@ function App() {
   
   */
 
-  //TODO: Change placeholder value to actual state (loaded from localstorage)
-  const [appState, setAppState] = useState(placeholderData);
+  const appStateLoadedFromLocalStorage = JSON.parse(
+    localStorage.getItem("appState")
+  );
+  // When page is refreshed, the user should be sent back to the "today" tab
+  if (appStateLoadedFromLocalStorage) {
+    appStateLoadedFromLocalStorage.currentSelectedTab = {
+      tabType: "dynamic",
+      id: "today",
+    };
+  }
+  const [appState, setAppState] = useState(
+    appStateLoadedFromLocalStorage || placeholderData
+  );
 
   const providerValue = { appState, setAppState };
 
   useEffect(() => {
     console.log("App rendered");
+
+    if (localStorage.init) {
+      console.log("Local storage already initialized");
+    } else {
+      console.log("Initializing local storage");
+      localStorage.setItem("init", true);
+      localStorage.setItem("appState", JSON.stringify(placeholderData));
+      setAppState(JSON.parse(localStorage.getItem("appState")));
+    }
   }, []);
+
+  // save data to local storage
+  useEffect(() => {
+    localStorage.setItem("appState", JSON.stringify(appState));
+  }, [appState]);
 
   return (
     <div className="App">
