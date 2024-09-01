@@ -154,3 +154,4 @@ yarn-error.log*
 
 # Personal .gitignore files
 test.js
+test_styleguide.css

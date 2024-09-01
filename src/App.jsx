@@ -3,6 +3,7 @@ import Board from "./components/Board/Board";
 import "./App.css";
 import { TodoContextProvider } from "./contexts/TodoContext";
 import { AppContextProvider } from "./contexts/AppContext";
+import "animate.css";
 
 function App() {
   /* Here's the hierarchy:

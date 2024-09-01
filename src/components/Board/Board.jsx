@@ -2,6 +2,7 @@ import styles from "./Board.module.css";
 import React, { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { TodoContext } from "../../contexts/TodoContext";
+import Modals from "../Modals/Modals";
 
 const Board = () => {
   const arrayOfBuiltInLists = [
@@ -16,6 +17,7 @@ const Board = () => {
 
   return (
     <div className={styles.board}>
+      <Modals />
       {/* Display only if currentSelected tab is a dynamic list */}
       {appState.currentSelectedTab.tabType === "dynamic" &&
         arrayOfBuiltInLists.map((builtInList) => {

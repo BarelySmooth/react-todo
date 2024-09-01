@@ -5,7 +5,7 @@ export const AppContext = createContext();
 export const AppContextProvider = (props) => {
   const [appState, setAppState] = useState({
     currentSelectedTab: { tabType: "dynamic", id: "today" },
-    currentModalType: null,
+    currentModal: null,
     currentOpenedTodo: null,
   });
 

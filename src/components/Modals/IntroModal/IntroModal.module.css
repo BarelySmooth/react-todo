@@ -1,0 +1,63 @@
+.introModal {
+  background-color: #cbddff;
+  border-radius: 10px;
+  width: 550px;
+  min-height: 500px;
+  border: none;
+  position: relative;
+}
+
+/* welcome modal backdrop */
+.introModal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.introModalWelcomeHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #482e96;
+}
+
+.introModalParagraph {
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  color: #5c41ac;
+  margin: 0px 20px 25px 20px;
+}
+
+.introModalFlexContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.introModalCloseButton {
+  width: 100%;
+  background-color: #482e96;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.introModalCloseButton:active {
+  background-color: #362271;
+}
+
+.introModalParagraph button:focus {
+  outline: 0;
+}
+
+.introModalParagraph a {
+  color: #5c41ac;
+  text-decoration: underline dotted;
+}
+
+.introModalParagraph a:visited {
+  color: #5c41ac;
+}

@@ -12,20 +12,12 @@ export const TodoContextProvider = (props) => {
     todoDataLoadedFromLocalStorage || placeholderTodoData
   );
 
-  useEffect(() => {
-    localStorage.setItem("todoData", JSON.stringify(todoState));
-  }, [todoState]);
-
+  // save data to local storage when state changes
   useEffect(() => {
     if (localStorage.init) {
-      console.log("Local storage already initialized");
-    } else {
-      console.log("Initializing local storage");
-      localStorage.setItem("init", true);
-      localStorage.setItem("todoData", JSON.stringify(placeholderTodoData));
-      setTodoState(JSON.parse(localStorage.getItem("todoData")));
+      localStorage.setItem("todoData", JSON.stringify(todoState));
     }
-  }, []);
+  }, [todoState]);
 
   return (
     <TodoContext.Provider value={{ todoState, setTodoState }}>
