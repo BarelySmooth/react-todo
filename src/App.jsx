@@ -14,20 +14,6 @@ function App() {
   
   */
 
-  // When page is refreshed, the user should be sent back to the "today" tab
-  // if (todoDataLoadedFromLocalStorage) {
-  //   todoDataLoadedFromLocalStorage.currentSelectedTab = {
-  //     tabType: "dynamic",
-  //     id: "today",
-  //   };
-  // }
-
-  // const [appState, setAppState] = useState(
-  //   appStateLoadedFromLocalStorage || placeholderData
-  // );
-
-  // save data to local storage
-
   return (
     <div className="App">
       <TodoContextProvider>
