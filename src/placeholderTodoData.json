@@ -222,9 +222,5 @@
       "priority": "low",
       "completed": false
     }
-  ],
-  "currentSelectedTab": {
-    "tabType": "dynamic",
-    "id": "today"
-  }
+  ]
 }

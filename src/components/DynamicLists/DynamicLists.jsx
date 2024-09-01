@@ -1,6 +1,7 @@
 import styles from "./DynamicLists.module.css";
 import { useContext } from "react";
-import { AppContext } from "../../App";
+import { AppContext } from "../../contexts/AppContext";
+import { TodoContext } from "../../contexts/TodoContext";
 
 const DynamicLists = () => {
   const arrayOfBuiltInLists = [

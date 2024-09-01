@@ -1,6 +1,7 @@
 import styles from "./Board.module.css";
 import React, { useContext } from "react";
-import { AppContext } from "../../App";
+import { AppContext } from "../../contexts/AppContext";
+import { TodoContext } from "../../contexts/TodoContext";
 
 const Board = () => {
   const arrayOfBuiltInLists = [
@@ -11,6 +12,7 @@ const Board = () => {
     { key: "backlog", value: "Backlog", icon: "ac_unit" },
   ];
   const { appState, setAppState } = useContext(AppContext);
+  const { todoState, setTodoState } = useContext(TodoContext);
 
   return (
     <div className={styles.board}>
@@ -27,7 +29,7 @@ const Board = () => {
       {appState.currentSelectedTab.tabType === "user_list" && (
         <h1>
           {
-            appState.subLists.find(
+            todoState.subLists.find(
               (subList) => subList.id === appState.currentSelectedTab.id
             ).title
           }
