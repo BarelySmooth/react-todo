@@ -38,6 +38,12 @@ const IntroModal = ({ modalOpen }) => {
     setTodoState(JSON.parse(localStorage.getItem("todoData")));
   };
 
+  /* 
+     TODO: User is able to bypass modal by clicking escape key. 
+     Ideally this should initialize the todo state (identical to the behaviour when close button is pressed).
+     This is observerd in all other modals, too.
+  */
+
   return (
     <dialog
       id="intro-modal"

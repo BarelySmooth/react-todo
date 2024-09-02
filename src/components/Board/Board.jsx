@@ -37,6 +37,34 @@ const Board = () => {
           }
         </h1>
       )}
+
+      {/* Display Todos */}
+      <div className={styles.todosContainer}>
+        {/* Case 1: User List */}
+        {appState.currentSelectedTab.tabType === "user_list" &&
+          todoState.subLists
+            .find((subList) => subList.id === appState.currentSelectedTab.id)
+            .todos.map((todo_id) => {
+              const todoDetails = todoState.todos.find(
+                (todo) => todo.id === todo_id
+              );
+              return (
+                <div
+                  className={styles.todoItem}
+                  key={todo_id}
+                  onClick={() => {
+                    setAppState({
+                      ...appState,
+                      currentModal: { type: "todo_details" },
+                      currentOpenedTodo: todoDetails,
+                    });
+                  }}
+                >
+                  {todoDetails.title}
+                </div>
+              );
+            })}
+      </div>
     </div>
   );
 };
