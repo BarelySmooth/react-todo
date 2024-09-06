@@ -70,20 +70,8 @@ const TodoDetailsModal = ({ modalOpen }) => {
       id="todo-details-modal"
       className={`${styles.todoDetailsModal} animate__bounceIn`}
     >
-      <div className={styles.topFlexContainer}>
-        <div className={styles.editTodoHeading}>Edit Todo</div>
-        {/* The browser autofocuses on this leaving a pretty distracting UI element */}
-        <Button
-          variant="contained"
-          className={styles.todoDetailsModalCloseButton}
-          onClick={handleClose}
-          disableElevation
-        >
-          Close
-        </Button>
-      </div>
+      <div className={styles.editTodoHeading}>Edit Todo</div>
 
-      {/* TODO: Redo this form. It isn't supposed to work like this. Use React state to keep track of form data */}
       <form>
         <TextField
           className={`${styles.todoTitleTextField} ${styles.formElement}`}
