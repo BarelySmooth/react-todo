@@ -96,10 +96,8 @@ const TodoDetailsModal = ({ modalOpen }) => {
           // minRows={4}
           // maxRows={15}
           // so, using a workaround...
-          InputProps={{
-            inputComponent: "textarea",
-            rows: 10,
-            multiline: true,
+          slotProps={{
+            input: { inputComponent: "textarea", rows: 10, multiline: true },
           }}
         />
         <div className={styles.dueDatePriorityFlexContainer}>
