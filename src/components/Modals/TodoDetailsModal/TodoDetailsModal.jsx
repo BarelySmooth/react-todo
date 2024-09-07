@@ -15,8 +15,10 @@ const TodoDetailsModal = ({ modalOpen }) => {
   const { todoState, setTodoState } = useContext(TodoContext);
 
   useEffect(() => {
+    const todoDetailsModal = document.getElementById("todo-details-modal");
     if (modalOpen) {
       console.log(document.getElementById("todo-details-modal"));
+      todoDetailsModal.classList.add("animate__bounceIn");
       document.getElementById("todo-details-modal")?.showModal();
     } else {
       document.getElementById("todo-details-modal").close();
@@ -66,10 +68,7 @@ const TodoDetailsModal = ({ modalOpen }) => {
   }, [appState.currentOpenedTodo]);
 
   return (
-    <dialog
-      id="todo-details-modal"
-      className={`${styles.todoDetailsModal} animate__bounceIn`}
-    >
+    <dialog id="todo-details-modal" className={`${styles.todoDetailsModal}`}>
       <div className={styles.editTodoHeading}>Edit Todo</div>
 
       <form>
