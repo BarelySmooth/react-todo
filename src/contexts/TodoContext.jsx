@@ -5,7 +5,7 @@ export const TodoContext = createContext();
 
 export const TodoContextProvider = (props) => {
   const todoDataLoadedFromLocalStorage = JSON.parse(
-    localStorage.getItem("todoData")
+    localStorage.getItem("barelysmooth_react_todo_todoData")
   );
 
   const [todoState, setTodoState] = useState(
@@ -14,8 +14,11 @@ export const TodoContextProvider = (props) => {
 
   // save data to local storage when state changes
   useEffect(() => {
-    if (localStorage.init) {
-      localStorage.setItem("todoData", JSON.stringify(todoState));
+    if (localStorage.barelysmooth_react_todo_init) {
+      localStorage.setItem(
+        "barelysmooth_react_todo_todoData",
+        JSON.stringify(todoState)
+      );
     }
   }, [todoState]);
 

@@ -21,7 +21,7 @@ const IntroModal = ({ modalOpen }) => {
   }, [modalOpen]);
 
   useEffect(() => {
-    if (localStorage.init) {
+    if (localStorage.barelysmooth_react_todo_init) {
       console.log("Local storage already initialized");
     } else {
       console.log("Initializing local storage");
@@ -33,9 +33,14 @@ const IntroModal = ({ modalOpen }) => {
   }, []);
 
   const handleIntroModalClose = () => {
-    localStorage.setItem("init", true);
-    localStorage.setItem("todoData", JSON.stringify(placeholderTodoData));
-    setTodoState(JSON.parse(localStorage.getItem("todoData")));
+    localStorage.setItem("barelysmooth_react_todo_init", true);
+    localStorage.setItem(
+      "barelysmooth_react_todo_todoData",
+      JSON.stringify(placeholderTodoData)
+    );
+    setTodoState(
+      JSON.parse(localStorage.getItem("barelysmooth_react_todo_todoData"))
+    );
   };
 
   /* 
