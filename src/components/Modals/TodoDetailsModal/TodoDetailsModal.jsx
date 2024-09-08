@@ -52,6 +52,80 @@ const TodoDetailsModal = ({ modalOpen }) => {
     });
   };
 
+  const handleDelete = () => {
+    //same as closing the modal... except this time, we delete the todo also!
+
+    const parentSublistID = appState.currentOpenedTodo.parentID;
+
+    console.log("Supposed to set todoState to...", {
+      ...todoState,
+      todos: [
+        ...todoState.todos.map((todo) => {
+          if (todo.id !== appState.currentOpenedTodo.id) {
+            return todo;
+          }
+        }),
+      ],
+      //you've also got to clear the deleted todo from its corresponding sublist
+      subLists: [
+        ...todoState.subLists.map((sublist) => {
+          if (sublist.id === parentSublistID) {
+            // remove todo
+            const updatedSublist = {
+              ...sublist,
+              todos: [
+                ...sublist.todos.filter(
+                  (todoID) => todoID !== appState.currentOpenedTodo.id
+                ),
+              ],
+            };
+
+            return updatedSublist;
+          } else {
+            return sublist;
+          }
+        }),
+      ],
+    });
+    setTodoState({
+      ...todoState,
+      todos: [
+        ...todoState.todos.filter(
+          (todo) => todo.id !== appState.currentOpenedTodo.id
+        ),
+      ],
+
+      //you've also got to clear the deleted todo from its corresponding sublist
+      subLists: [
+        ...todoState.subLists.map((sublist) => {
+          if (sublist.id === parentSublistID) {
+            // remove todo
+            const updatedSublist = {
+              ...sublist,
+              todos: [
+                ...sublist.todos.filter(
+                  (todoID) => todoID !== appState.currentOpenedTodo.id
+                ),
+              ],
+            };
+
+            return updatedSublist;
+          } else {
+            return sublist;
+          }
+        }),
+      ],
+    });
+
+    console.log(todoState);
+
+    setAppState({
+      ...appState,
+      currentModal: null,
+      currentOpenedTodo: null,
+    });
+  };
+
   const makeDoubleDigit = (num) => (num < 10 ? `0${num}` : num);
 
   // Form states
@@ -156,6 +230,14 @@ const TodoDetailsModal = ({ modalOpen }) => {
         </div>
 
         <div className={styles.saveButtonFlexContainer}>
+          <Button
+            variant="text"
+            className={styles.todoDetailsModalDeleteButton}
+            color="error"
+            onClick={handleDelete}
+          >
+            Delete
+          </Button>
           <Button
             variant="contained"
             className={styles.todoDetailsModalSaveButton}
