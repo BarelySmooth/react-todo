@@ -25,7 +25,26 @@ const TodoDetailsModal = ({ modalOpen }) => {
     }
   }, [modalOpen]);
 
-  const handleClose = () => {
+  const handleSave = () => {
+    const updatedTodo = {
+      ...appState.currentOpenedTodo,
+      title: todoTitle,
+      description: todoDescription,
+      dueDate: new Date(todoDueDate).toISOString(),
+      priority: priority,
+    };
+    setTodoState({
+      ...todoState,
+      todos: [
+        ...todoState.todos.map((todo) => {
+          if (todo.id === appState.currentOpenedTodo.id) {
+            return updatedTodo;
+          } else {
+            return todo;
+          }
+        }),
+      ],
+    });
     setAppState({
       ...appState,
       currentModal: null,
@@ -58,9 +77,9 @@ const TodoDetailsModal = ({ modalOpen }) => {
 
       let dueDate = new Date(appState.currentOpenedTodo?.dueDate);
       setTodoDueDate(
-        `${dueDate.getFullYear()}-${
+        `${dueDate.getFullYear()}-${makeDoubleDigit(
           dueDate.getMonth() + 1
-        }-${dueDate.getDate()}`
+        )}-${makeDoubleDigit(dueDate.getDate())}`
       );
 
       setPriority(appState.currentOpenedTodo.priority);
@@ -140,7 +159,7 @@ const TodoDetailsModal = ({ modalOpen }) => {
           <Button
             variant="contained"
             className={styles.todoDetailsModalSaveButton}
-            onClick={handleClose}
+            onClick={handleSave}
           >
             Save
           </Button>
