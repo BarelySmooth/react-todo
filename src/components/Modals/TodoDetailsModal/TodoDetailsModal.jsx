@@ -45,48 +45,36 @@ const TodoDetailsModal = ({ modalOpen }) => {
         }),
       ],
     });
+    console.log("prev state", appState);
     setAppState({
       ...appState,
       currentModal: null,
       currentOpenedTodo: null,
     });
+    console.log("new state", appState);
   };
+
+  // If the user clicks escape, the modal automatically closes. Here we are updating the state, so that it keeps up with what actually happens.
+  // When the user clicks the escape key, the intended behaviour is to close the modal without saving. Here, the above handleSave() function isn't called, and hence no saving happens.
+  /*  BUG: Clicking Escape while the modal is open causes the app to go back to the "Today" tab.
+  This is probably because the appState gets reset to its original value (most likely caused by a re-render of the <AppContext /> component, which is in turn caused by its child components updating)
+  While this can technically be mitigated by setting the currentOpenTab to the previous stored value in the below function call, that would be BADCODE imo. */
+  useEffect(() => {
+    document
+      .getElementById("todo-details-modal")
+      ?.addEventListener("close", () => {
+        setAppState({
+          ...appState,
+          currentModal: null,
+          currentOpenedTodo: null,
+        });
+      });
+  }, []);
 
   const handleDelete = () => {
     //same as closing the modal... except this time, we delete the todo also!
 
     const parentSublistID = appState.currentOpenedTodo.parentID;
-
-    console.log("Supposed to set todoState to...", {
-      ...todoState,
-      todos: [
-        ...todoState.todos.map((todo) => {
-          if (todo.id !== appState.currentOpenedTodo.id) {
-            return todo;
-          }
-        }),
-      ],
-      //you've also got to clear the deleted todo from its corresponding sublist
-      subLists: [
-        ...todoState.subLists.map((sublist) => {
-          if (sublist.id === parentSublistID) {
-            // remove todo
-            const updatedSublist = {
-              ...sublist,
-              todos: [
-                ...sublist.todos.filter(
-                  (todoID) => todoID !== appState.currentOpenedTodo.id
-                ),
-              ],
-            };
-
-            return updatedSublist;
-          } else {
-            return sublist;
-          }
-        }),
-      ],
-    });
     setTodoState({
       ...todoState,
       todos: [
@@ -94,7 +82,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
           (todo) => todo.id !== appState.currentOpenedTodo.id
         ),
       ],
-
       //you've also got to clear the deleted todo from its corresponding sublist
       subLists: [
         ...todoState.subLists.map((sublist) => {
@@ -108,7 +95,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
                 ),
               ],
             };
-
             return updatedSublist;
           } else {
             return sublist;
@@ -116,8 +102,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
         }),
       ],
     });
-
-    console.log(todoState);
 
     setAppState({
       ...appState,

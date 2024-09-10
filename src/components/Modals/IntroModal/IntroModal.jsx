@@ -32,22 +32,18 @@ const IntroModal = ({ modalOpen }) => {
     }
   }, []);
 
-  const handleIntroModalClose = () => {
-    localStorage.setItem("barelysmooth_react_todo_init", true);
-    localStorage.setItem(
-      "barelysmooth_react_todo_todoData",
-      JSON.stringify(placeholderTodoData)
-    );
-    setTodoState(
-      JSON.parse(localStorage.getItem("barelysmooth_react_todo_todoData"))
-    );
-  };
-
-  /* 
-     TODO: User is able to bypass modal by clicking escape key. 
-     Ideally this should initialize the todo state (identical to the behaviour when close button is pressed).
-     This is observerd in all other modals, too.
-  */
+  useEffect(() => {
+    document.getElementById("intro-modal").addEventListener("close", () => {
+      localStorage.setItem("barelysmooth_react_todo_init", true);
+      localStorage.setItem(
+        "barelysmooth_react_todo_todoData",
+        JSON.stringify(placeholderTodoData)
+      );
+      setTodoState(
+        JSON.parse(localStorage.getItem("barelysmooth_react_todo_todoData"))
+      );
+    });
+  }, []);
 
   return (
     <dialog
@@ -85,7 +81,6 @@ const IntroModal = ({ modalOpen }) => {
         className={styles.introModalCloseButton}
         id="intro-modal-close-button"
         onClick={() => {
-          handleIntroModalClose();
           document.getElementById("intro-modal").close();
         }}
       >
