@@ -19,7 +19,6 @@ ul.dynamic_lists > li {
   transition: 0.25s;
 }
 
-/* TODO: Implement custom style for selected list item */
 ul.dynamic_lists > .dynamic_list_item_selected {
   padding: 10px 10px;
   background-color: white;

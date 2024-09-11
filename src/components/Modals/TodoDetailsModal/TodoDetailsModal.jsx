@@ -58,18 +58,19 @@ const TodoDetailsModal = ({ modalOpen }) => {
   // When the user clicks the escape key, the intended behaviour is to close the modal without saving. Here, the above handleSave() function isn't called, and hence no saving happens.
   /*  BUG: Clicking Escape while the modal is open causes the app to go back to the "Today" tab.
   This is probably because the appState gets reset to its original value (most likely caused by a re-render of the <AppContext /> component, which is in turn caused by its child components updating)
-  While this can technically be mitigated by setting the currentOpenTab to the previous stored value in the below function call, that would be BADCODE imo. */
-  useEffect(() => {
-    document
-      .getElementById("todo-details-modal")
-      ?.addEventListener("close", () => {
-        setAppState({
-          ...appState,
-          currentModal: null,
-          currentOpenedTodo: null,
-        });
-      });
-  }, []);
+  While this can technically be mitigated by setting the currentOpenTab to the previous stored value in the below function call, that would be BADCODE imo. 
+  Temporarily removing this piece of code, since the afforementioned bug happens even when the save button is clicked. */
+  // useEffect(() => {
+  //   document
+  //     .getElementById("todo-details-modal")
+  //     ?.addEventListener("close", () => {
+  //       setAppState({
+  //         ...appState,
+  //         currentModal: null,
+  //         currentOpenedTodo: null,
+  //       });
+  //     });
+  // }, []);
 
   const handleDelete = () => {
     //same as closing the modal... except this time, we delete the todo also!
