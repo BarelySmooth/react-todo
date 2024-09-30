@@ -84,6 +84,12 @@ const Board = () => {
             currentOpenedTodo: null,
           });
         }}
+        style={{
+          display:
+            appState.currentSelectedTab.tabType === "user_list"
+              ? "flex"
+              : "none",
+        }}
       >
         <span className="material-symbols-outlined">add</span>
       </Fab>
