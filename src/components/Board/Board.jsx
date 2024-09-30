@@ -56,7 +56,10 @@ const Board = () => {
                   onClick={() => {
                     setAppState({
                       ...appState,
-                      currentModal: { type: "todo_details" },
+                      currentModal: {
+                        type: "todo_details",
+                        action: "edit_todo",
+                      },
                       currentOpenedTodo: todoDetails,
                     });
                   }}
@@ -71,8 +74,18 @@ const Board = () => {
         aria-label="add"
         className={styles.fabAddButton}
         variant="circular"
+        onClick={() => {
+          setAppState({
+            ...appState,
+            currentModal: {
+              type: "todo_details",
+              action: "add_todo",
+            },
+            currentOpenedTodo: null,
+          });
+        }}
       >
-        <span class="material-symbols-outlined">add</span>
+        <span className="material-symbols-outlined">add</span>
       </Fab>
     </div>
   );

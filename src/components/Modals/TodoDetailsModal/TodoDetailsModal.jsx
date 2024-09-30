@@ -9,7 +9,10 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { v1 as uuidv1 } from "uuid";
+import { type } from "@testing-library/user-event/dist/type";
 
+// This modal will be used to add/edit tasks. It will be opened when the user clicks on a task or the FAB.
 const TodoDetailsModal = ({ modalOpen }) => {
   const { appState, setAppState } = useContext(AppContext);
   const { todoState, setTodoState } = useContext(TodoContext);
@@ -52,6 +55,49 @@ const TodoDetailsModal = ({ modalOpen }) => {
       currentOpenedTodo: null,
     });
     console.log("new state", appState);
+  };
+
+  const handleCreate = () => {
+    // get ID for new todo
+    let newTodoID;
+    do {
+      newTodoID = "todo_" + uuidv1();
+    } while (todoState.todos.find((todo) => todo.id === newTodoID));
+
+    const newTodo = {
+      id: newTodoID,
+      type: "todo",
+      parentID: appState.currentSelectedTab.id,
+      title: todoTitle,
+      description: todoDescription,
+      dueDate: new Date(todoDueDate).toISOString(),
+      priority: priority,
+      completed: false,
+    };
+
+    // updated subLists
+    const parentSublistID = appState.currentSelectedTab.id;
+    const updatedSublistArray = todoState.subLists.map((sublist) => {
+      if (sublist.id === parentSublistID) {
+        return {
+          ...sublist,
+          todos: [...sublist.todos, newTodoID],
+        };
+      } else {
+        return sublist;
+      }
+    });
+
+    setTodoState({
+      ...todoState,
+      subLists: updatedSublistArray,
+      todos: [...todoState.todos, newTodo],
+    });
+    setAppState({
+      ...appState,
+      currentModal: null,
+      currentOpenedTodo: null,
+    });
   };
 
   // If the user clicks escape, the modal automatically closes. Here we are updating the state, so that it keeps up with what actually happens.
@@ -114,27 +160,20 @@ const TodoDetailsModal = ({ modalOpen }) => {
   const makeDoubleDigit = (num) => (num < 10 ? `0${num}` : num);
 
   // Form states
-  const [todoTitle, setTodoTitle] = useState(appState.currentOpenedTodo?.title);
-  const [todoDescription, setTodoDescription] = useState(
-    appState.currentOpenedTodo?.description
-  );
-  let dueDate = new Date(appState.currentOpenedTodo?.dueDate);
-  const [todoDueDate, setTodoDueDate] = useState(
-    `${dueDate.getFullYear()}-${makeDoubleDigit(
-      dueDate.getMonth() + 1
-    )}-${makeDoubleDigit(dueDate.getDate())}`
-  );
-  const [priority, setPriority] = useState(
-    // this is so that MUI doesn't yell at me for supplying an undefined value, which is not in the select dropdown
-    appState.currentOpenedTodo?.priority ?? "low"
-  );
+  const [todoTitle, setTodoTitle] = useState();
+  const [todoDescription, setTodoDescription] = useState();
+  const [todoDueDate, setTodoDueDate] = useState();
+  const [priority, setPriority] = useState();
 
+  // Set form states when a new todo is opened
   useEffect(() => {
     if (appState.currentOpenedTodo) {
+      console.log(appState.currentOpenedTodo);
+
       setTodoTitle(appState.currentOpenedTodo.title);
       setTodoDescription(appState.currentOpenedTodo.description);
 
-      let dueDate = new Date(appState.currentOpenedTodo?.dueDate);
+      let dueDate = new Date(appState.currentOpenedTodo.dueDate);
       setTodoDueDate(
         `${dueDate.getFullYear()}-${makeDoubleDigit(
           dueDate.getMonth() + 1
@@ -142,12 +181,34 @@ const TodoDetailsModal = ({ modalOpen }) => {
       );
 
       setPriority(appState.currentOpenedTodo.priority);
+    } else {
+      console.log(appState.currentOpenedTodo);
+      setTodoTitle("");
+      setTodoDescription("");
+
+      let dueDate = new Date("2025-12-31T00:00:00.000Z"); //TODO: Change this default due date to something more sensible
+      setTodoDueDate(
+        `${dueDate.getFullYear()}-${makeDoubleDigit(
+          dueDate.getMonth() + 1
+        )}-${makeDoubleDigit(dueDate.getDate())}`
+      );
+      setPriority("high");
     }
-  }, [appState.currentOpenedTodo]);
+  }, [appState.currentModal]);
 
   return (
-    <dialog id="todo-details-modal" className={`${styles.todoDetailsModal}`}>
-      <div className={styles.editTodoHeading}>Edit Todo</div>
+    <dialog
+      id="todo-details-modal"
+      className={`${styles.todoDetailsModal} ${
+        appState.currentModal?.action === "edit_todo"
+          ? styles.editTodoModal
+          : styles.addTodoModal
+      }`}
+    >
+      <div className={styles.todoDetailsModalHeading}>
+        {console.log(JSON.stringify(appState.currentModal))}
+        {appState.currentModal?.action === "edit_todo" ? "Edit" : "Add"} Todo
+      </div>
 
       <form>
         <TextField
@@ -217,7 +278,7 @@ const TodoDetailsModal = ({ modalOpen }) => {
         <div className={styles.saveButtonFlexContainer}>
           <Button
             variant="text"
-            className={styles.todoDetailsModalDeleteButton}
+            className={styles.deleteButton}
             color="error"
             onClick={handleDelete}
           >
@@ -225,8 +286,12 @@ const TodoDetailsModal = ({ modalOpen }) => {
           </Button>
           <Button
             variant="contained"
-            className={styles.todoDetailsModalSaveButton}
-            onClick={handleSave}
+            className={styles.saveButton}
+            onClick={
+              appState.currentModal?.action === "edit_todo"
+                ? handleSave
+                : handleCreate
+            }
           >
             Save
           </Button>

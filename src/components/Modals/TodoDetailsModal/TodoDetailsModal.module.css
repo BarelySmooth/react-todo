@@ -20,7 +20,7 @@
   border-bottom: 1px solid #b0c4de;
 }
 
-.editTodoHeading {
+.todoDetailsModalHeading {
   font-size: 1.5rem;
   font-weight: 600;
   font-family: Inter, sans-serif;
@@ -47,4 +47,13 @@
 .saveButtonFlexContainer {
   display: flex;
   justify-content: space-between;
+}
+
+/* For Add Todo Modals, the delete button is hidden and the save button should touch the flex-end */
+dialog.addTodoModal .deleteButton {
+  display: none;
+}
+
+dialog.addTodoModal .saveButtonFlexContainer {
+  justify-content: flex-end;
 }
