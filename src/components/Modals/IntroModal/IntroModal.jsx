@@ -10,9 +10,7 @@ const IntroModal = ({ modalOpen }) => {
   const { todoState, setTodoState } = useContext(TodoContext);
 
   useEffect(() => {
-    console.log(modalOpen);
     if (modalOpen) {
-      console.log(document.getElementById("intro-modal"));
       document.getElementById("intro-modal")?.showModal();
       document.getElementById("intro-modal-close-button")?.focus();
     } else {
@@ -21,10 +19,7 @@ const IntroModal = ({ modalOpen }) => {
   }, [modalOpen]);
 
   useEffect(() => {
-    if (localStorage.barelysmooth_react_todo_init) {
-      console.log("Local storage already initialized");
-    } else {
-      console.log("Initializing local storage");
+    if (!localStorage.barelysmooth_react_todo_init) {
       setAppState({
         ...appState,
         currentModal: { type: "introModal" },

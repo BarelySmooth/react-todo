@@ -20,7 +20,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
   useEffect(() => {
     const todoDetailsModal = document.getElementById("todo-details-modal");
     if (modalOpen) {
-      console.log(document.getElementById("todo-details-modal"));
       todoDetailsModal.classList.add("animate__bounceIn");
       document.getElementById("todo-details-modal")?.showModal();
     } else {
@@ -48,13 +47,11 @@ const TodoDetailsModal = ({ modalOpen }) => {
         }),
       ],
     });
-    console.log("prev state", appState);
     setAppState({
       ...appState,
       currentModal: null,
       currentOpenedTodo: null,
     });
-    console.log("new state", appState);
   };
 
   const handleCreate = () => {
@@ -168,8 +165,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
   // Set form states when a new todo is opened
   useEffect(() => {
     if (appState.currentOpenedTodo) {
-      console.log(appState.currentOpenedTodo);
-
       setTodoTitle(appState.currentOpenedTodo.title);
       setTodoDescription(appState.currentOpenedTodo.description);
 
@@ -182,7 +177,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
 
       setPriority(appState.currentOpenedTodo.priority);
     } else {
-      console.log(appState.currentOpenedTodo);
       setTodoTitle("");
       setTodoDescription("");
 
@@ -206,7 +200,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
       }`}
     >
       <div className={styles.todoDetailsModalHeading}>
-        {console.log(JSON.stringify(appState.currentModal))}
         {appState.currentModal?.action === "edit_todo" ? "Edit" : "Add"} Todo
       </div>
 
@@ -250,7 +243,6 @@ const TodoDetailsModal = ({ modalOpen }) => {
               inputLabel: { shrink: true },
             }}
             onChange={(e) => {
-              console.log(e.target.value);
               const newDate = new Date(e.target.value);
               setTodoDueDate(
                 `${newDate.getFullYear()}-${makeDoubleDigit(
