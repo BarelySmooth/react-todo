@@ -25,3 +25,15 @@
 .todoItem:hover {
   background-color: #d4e7ff;
 }
+
+/* when todo item is pressed down */
+.todoItem:active {
+  background-color: #bed4ef;
+  transition: 0.1s;
+}
+
+.fabAddButton {
+  position: absolute !important;
+  bottom: 20px;
+  right: 20px;
+}

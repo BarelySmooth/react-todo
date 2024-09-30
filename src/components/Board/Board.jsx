@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { TodoContext } from "../../contexts/TodoContext";
 import Modals from "../Modals/Modals";
+import Fab from "@mui/material/Fab";
 
 const Board = () => {
   const arrayOfBuiltInLists = [
@@ -65,6 +66,14 @@ const Board = () => {
               );
             })}
       </div>
+      <Fab
+        color="primary"
+        aria-label="add"
+        className={styles.fabAddButton}
+        variant="circular"
+      >
+        <span class="material-symbols-outlined">add</span>
+      </Fab>
     </div>
   );
 };
