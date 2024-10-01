@@ -300,6 +300,7 @@ const TodoDetailsModal = ({ modalOpen }) => {
                 ? handleSave
                 : handleCreate
             }
+            disabled={!todoTitle}
           >
             Save
           </Button>
