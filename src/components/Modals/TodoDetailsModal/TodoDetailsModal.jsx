@@ -215,11 +215,11 @@ const TodoDetailsModal = ({ modalOpen }) => {
             });
           }}
         >
-          <span class="material-symbols-outlined">close</span>
+          <span className="material-symbols-outlined">close</span>
         </IconButton>
       </div>
 
-      <form autocomplete="off">
+      <form autoComplete="off">
         <TextField
           className={`${styles.todoTitleTextField} ${styles.formElement}`}
           label="Todo Title"
