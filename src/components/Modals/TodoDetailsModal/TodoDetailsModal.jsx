@@ -4,6 +4,8 @@ import placeholderTodoData from "../../../placeholderTodoData.json";
 import { AppContext } from "../../../contexts/AppContext";
 import { TodoContext } from "../../../contexts/TodoContext";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -199,8 +201,22 @@ const TodoDetailsModal = ({ modalOpen }) => {
           : styles.addTodoModal
       }`}
     >
-      <div className={styles.todoDetailsModalHeading}>
-        {appState.currentModal?.action === "edit_todo" ? "Edit" : "Add"} Todo
+      <div className={styles.titleFlexContainer}>
+        <div className={styles.todoDetailsModalHeading}>
+          {appState.currentModal?.action === "edit_todo" ? "Edit" : "Add"} Todo
+        </div>
+        <IconButton
+          className={styles.closeButton}
+          onClick={() => {
+            setAppState({
+              ...appState,
+              currentModal: null,
+              currentOpenedTodo: null,
+            });
+          }}
+        >
+          <span class="material-symbols-outlined">close</span>
+        </IconButton>
       </div>
 
       <form>

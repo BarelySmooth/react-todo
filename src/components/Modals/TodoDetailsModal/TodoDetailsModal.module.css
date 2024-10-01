@@ -32,6 +32,16 @@
   margin-bottom: 10px;
 }
 
+.titleFlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeButton {
+  align-self: flex-start; /* Looks better IMO */
+}
+
 .formElement {
   margin-top: 7px !important;
   margin-bottom: 7px !important;
