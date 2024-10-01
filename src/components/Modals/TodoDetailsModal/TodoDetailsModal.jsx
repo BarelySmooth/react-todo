@@ -219,7 +219,7 @@ const TodoDetailsModal = ({ modalOpen }) => {
         </IconButton>
       </div>
 
-      <form>
+      <form autocomplete="off">
         <TextField
           className={`${styles.todoTitleTextField} ${styles.formElement}`}
           label="Todo Title"
@@ -266,6 +266,7 @@ const TodoDetailsModal = ({ modalOpen }) => {
                 )}-${makeDoubleDigit(newDate.getDate())}`
               );
             }}
+            autoComplete="off"
           />
           <FormControl>
             <InputLabel id="priority-select-label">Priority</InputLabel>
