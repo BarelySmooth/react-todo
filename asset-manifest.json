@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-todo/static/css/main.3df63478.css",
+    "main.js": "/react-todo/static/js/main.eb8178a4.js",
+    "static/js/453.fc5fca16.chunk.js": "/react-todo/static/js/453.fc5fca16.chunk.js",
+    "static/media/barelysmooth.png": "/react-todo/static/media/barelysmooth.165757c46716384563f4.png",
+    "index.html": "/react-todo/index.html",
+    "main.3df63478.css.map": "/react-todo/static/css/main.3df63478.css.map",
+    "main.eb8178a4.js.map": "/react-todo/static/js/main.eb8178a4.js.map",
+    "453.fc5fca16.chunk.js.map": "/react-todo/static/js/453.fc5fca16.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3df63478.css",
+    "static/js/main.eb8178a4.js"
+  ]
+}
